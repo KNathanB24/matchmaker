@@ -6,6 +6,69 @@
 </head>
 
 <body>
-    <h1>Matchmaker</h1>
+<h1>Matchmaker</h1>
+
+    <label>Pink Floyd is awesome.</label><br />
+    <select id="q1">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Impartial</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>The city is better than the country.</label><br />
+    <select id="q2">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Impartial</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Physics is the best STEM major.</label><br />
+    <select id="q3">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Impartial</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Broccoli is delicious.</label><br />
+    <select id="q4">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Impartial</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Winter is the worst season.</label><br />
+    <select id="q5">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Impartial</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+
+    <br /><br /><br />
+    <button onclick="macthCalculation()">Calculate Macthability Score</button>
+    <p id="macthability"></p>
+
+
+
+<script>
+    console.log("Starting Matchmaker...")
+    const DESIRED_ANSWER = 3; //Disagree
+</script>
+
+
+
 </body>
 </html>
