@@ -3,16 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>Matchmaker</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff4da6;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #ff1a75;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        /* Question labels and select boxes */
+        label {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        select {
+            padding: 5px 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ff4da6;
+            font-size: 1em;
+        }
+
+        select:focus {
+            outline: none;
+            border: 2px solid #ff1a75;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #ff4da6;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff1a75;
+            transform: scale(1.05);
+        }
+
+        /* Result boxes */
+        #questionScores, #matchability {
+            background-color: #fff0f5;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 1.1em;
+        }
+
+        /* Emoji styling in message */
+        #matchability br + span {
+            font-size: 1.5em;
+        }
+    </style>
 </head>
 
 <body>
 <h1>Matchmaker</h1>
 
-<p>Welcome to Kyle Bledsoe's Matchmaker! Answer the following statements from 1 (Strongly Disagree) to 5 (Strongly Agree).<br>
-After answering all questions, click the button to see your matchability score and find out if we were truly meant to be!</p>
+<!-- User instructions -->
+<p>Welcome! Answer the following statements from 1 (Strongly Disagree) to 5 (Strongly Agree).<br>
+Then click the button to see your matchability score and message!</p>
 
+<!-- Questions -->
 <label>Pink Floyd is awesome.</label><br />
 <select id="q1">
+    <option value="">Select...</option>
     <option value="5">Strongly Agree</option>
     <option value="4">Agree</option>
     <option value="3">Impartial</option>
@@ -23,6 +108,7 @@ After answering all questions, click the button to see your matchability score a
 
 <label>The city is better than the country.</label><br />
 <select id="q2">
+    <option value="">Select...</option>
     <option value="5">Strongly Agree</option>
     <option value="4">Agree</option>
     <option value="3">Impartial</option>
@@ -33,6 +119,7 @@ After answering all questions, click the button to see your matchability score a
 
 <label>Physics is the best STEM major.</label><br />
 <select id="q3">
+    <option value="">Select...</option>
     <option value="5">Strongly Agree</option>
     <option value="4">Agree</option>
     <option value="3">Impartial</option>
@@ -43,6 +130,7 @@ After answering all questions, click the button to see your matchability score a
 
 <label>Broccoli is delicious.</label><br />
 <select id="q4">
+    <option value="">Select...</option>
     <option value="5">Strongly Agree</option>
     <option value="4">Agree</option>
     <option value="3">Impartial</option>
@@ -53,6 +141,7 @@ After answering all questions, click the button to see your matchability score a
 
 <label>Winter is the worst season.</label><br />
 <select id="q5">
+    <option value="">Select...</option>
     <option value="5">Strongly Agree</option>
     <option value="4">Agree</option>
     <option value="3">Impartial</option>
@@ -73,6 +162,7 @@ After answering all questions, click the button to see your matchability score a
 <script>
 console.log("Starting Matchmaker...");
 
+// Desired answers for each question
 const DESIRED = [5, 2, 4, 1, 5];
 
 // Validation function
@@ -101,6 +191,7 @@ function matchCalculation() {
         return; // Stop if validation fails
     }
 
+    // Show the summary header
     document.getElementById("summaryHeader").style.display = "block";
 
     const questions = [
@@ -143,7 +234,7 @@ function matchCalculation() {
         message = "Runs away... 🏃‍♂️";
     }
 
-    // Display threshold message 
+    // Display threshold message below total score
     document.getElementById("matchability").innerHTML += "<br>" + message;
 }
 </script>
