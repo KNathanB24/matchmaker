@@ -64,35 +64,64 @@
 
 
 <script>
-    console.log("Starting Matchmaker...");
+console.log("Starting Matchmaker...");
 
-    // Desired answers for each question
-    const DESIRED = [5, 2, 4, 1, 5];
+// Desired answers for each question
+const DESIRED = [5, 2, 4, 1, 5];
 
-    function matchCalculation() {
-        // Get answers
-        let q1 = parseInt(document.getElementById("q1").value);
-        let q2 = parseInt(document.getElementById("q2").value);
-        let q3 = parseInt(document.getElementById("q3").value);
-        let q4 = parseInt(document.getElementById("q4").value);
-        let q5 = parseInt(document.getElementById("q5").value);
+function matchCalculation() {
+    // Get answers
+    let answers = [
+        parseInt(document.getElementById("q1").value),
+        parseInt(document.getElementById("q2").value),
+        parseInt(document.getElementById("q3").value),
+        parseInt(document.getElementById("q4").value),
+        parseInt(document.getElementById("q5").value)
+    ];
 
-        let answers = [q1, q2, q3, q4, q5];
+    const questions = [
+        "Pink Floyd is awesome.",
+        "The city is better than the country.",
+        "Physics is the best STEM major.",
+        "Broccoli is delicious.",
+        "Winter is the worst season."
+    ];
 
-        let totalDifference = 0;
+    let totalDifference = 0;
+    let questionDetails = "";
 
-        // Calculate matchability score
-        for (let i = 0; i < answers.length; i++) {
-            let difference = Math.abs(answers[i] - DESIRED[i]);
-            totalDifference += difference;
-        }
+    for (let i = 0; i < answers.length; i++) {
+        let diff = Math.abs(answers[i] - DESIRED[i]);
+        totalDifference += diff;
 
-        // Convert to score out of 100
-        let matchabilityScore = 100 - (totalDifference * 4);
-
-        // Display result
-       document.getElementById("matchability").innerText ="Your matchability score is: " + matchabilityScore + "%";
+        // Question-specific matchability (scale 0-100)
+        let questionScore = 100 - (diff * 20);
+        questionDetails += questions[i] + " → Matchability: " + questionScore + "%<br>";
     }
+
+    // Display per-question scores
+    document.getElementById("questionScores").innerHTML = questionDetails;
+
+    // Total matchability
+    let matchabilityScore = 100 - (totalDifference * 4);
+    document.getElementById("matchability").innerText =
+        "Your total matchability score is: " + matchabilityScore + "%";
+
+    // Threshold messages
+    let message = "";
+    if (matchabilityScore >= 90) {
+        message = "True love at first sight! ❤️";
+    } else if (matchabilityScore >= 70 && matchabilityScore <= 89) {
+        message = "Let's grab dinner! 🍽️";
+    } else if (matchabilityScore >= 60 && matchabilityScore < 70) {
+        message = "Howdy, pal! 🤠";
+    } else { // below 60
+        message = "runs away... 🏃‍♂️";
+    }
+
+    // Display threshold message below total score
+    document.getElementById("matchability").innerHTML += "<br>" + message;
+}
 </script>
 
 
