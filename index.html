@@ -62,19 +62,17 @@ After answering all questions, click the button to see your matchability score a
 
 <br /><br /><br />
 
-<!-- Div to show per-question matchability -->
+<h2 id="summaryHeader" style="display:none;">Summary</h2>
+
 <div id="questionScores"></div>
 
-<!-- Paragraph to show total matchability -->
 <p id="matchability"></p>
 
-<!-- Button to calculate -->
 <button onclick="matchCalculation()">Calculate Matchability Score</button>
 
 <script>
 console.log("Starting Matchmaker...");
 
-// Desired answers for each question
 const DESIRED = [5, 2, 4, 1, 5];
 
 // Validation function
@@ -102,6 +100,8 @@ function matchCalculation() {
     if (!validate(answers)) {
         return; // Stop if validation fails
     }
+
+    document.getElementById("summaryHeader").style.display = "block";
 
     const questions = [
         "Pink Floyd is awesome.",
