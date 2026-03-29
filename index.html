@@ -8,60 +8,65 @@
 <body>
 <h1>Matchmaker</h1>
 
-    <label>Pink Floyd is awesome.</label><br />
-    <select id="q1">
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Impartial</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-    </select>
-    <br /><br />
+<label>Pink Floyd is awesome.</label><br />
+<select id="q1">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Impartial</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
+<br /><br />
 
-    <label>The city is better than the country.</label><br />
-    <select id="q2">
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Impartial</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-    </select>
-    <br /><br />
+<label>The city is better than the country.</label><br />
+<select id="q2">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Impartial</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
+<br /><br />
 
-    <label>Physics is the best STEM major.</label><br />
-    <select id="q3">
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Impartial</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-    </select>
-    <br /><br />
+<label>Physics is the best STEM major.</label><br />
+<select id="q3">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Impartial</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
+<br /><br />
 
-    <label>Broccoli is delicious.</label><br />
-    <select id="q4">
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Impartial</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-    </select>
-    <br /><br />
+<label>Broccoli is delicious.</label><br />
+<select id="q4">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Impartial</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
+<br /><br />
 
-    <label>Winter is the worst season.</label><br />
-    <select id="q5">
-        <option value="5">Strongly Agree</option>
-        <option value="4">Agree</option>
-        <option value="3">Impartial</option>
-        <option value="2">Disagree</option>
-        <option value="1">Strongly Disagree</option>
-    </select>
+<label>Winter is the worst season.</label><br />
+<select id="q5">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Impartial</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
 
-    <br /><br /><br />
-    <button onclick="matchCalculation()">Calculate Matchability Score</button>
-    <p id="matchability"></p>
+<br /><br /><br />
 
+<!-- Div to show per-question matchability -->
+<div id="questionScores"></div>
 
+<!-- Paragraph to show total matchability -->
+<p id="matchability"></p>
+
+<!-- Button to calculate -->
+<button onclick="matchCalculation()">Calculate Matchability Score</button>
 
 <script>
 console.log("Starting Matchmaker...");
@@ -94,7 +99,7 @@ function matchCalculation() {
         let diff = Math.abs(answers[i] - DESIRED[i]);
         totalDifference += diff;
 
-        // Question-specific matchability (scale 0-100)
+        // Question-specific matchability (0-100)
         let questionScore = 100 - (diff * 20);
         questionDetails += questions[i] + " → Matchability: " + questionScore + "%<br>";
     }
@@ -116,15 +121,13 @@ function matchCalculation() {
     } else if (matchabilityScore >= 60 && matchabilityScore < 70) {
         message = "Howdy, pal! 🤠";
     } else { // below 60
-        message = "runs away... 🏃‍♂️";
+        message = "Runs away... 🏃‍♂️";
     }
 
-    // Display threshold message below total score
+    // Display threshold message 
     document.getElementById("matchability").innerHTML += "<br>" + message;
 }
 </script>
-
-
 
 </body>
 </html>
